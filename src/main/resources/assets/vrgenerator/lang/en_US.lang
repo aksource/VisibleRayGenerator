@@ -1,0 +1,17 @@
+﻿
+tile.CE_Solar.name=VisibleRay Generator
+CE.block.Solar.0.name=VisibleRay Generator 1 EU/t
+CE.block.Solar.1.name=VisibleRay Generator 8 EU/t
+CE.block.Solar.2.name=VisibleRay Generator 64 EU/t
+CE.block.Solar.3.name=VisibleRay Generator 512 EU/t
+CE.block.Generator.0.name=CE Permanent light generator 2 EU/t
+CE.block.Generator.1.name=CE Permanent light generator 8 EU/t
+CE.block.Generator.2.name=CE Permanent light generator 32 EU/t
+CE.block.Generator.3.name=CE Permanent light generator 128 EU/t
+CE.block.Generator.4.name=CE Permanent light generator 512 EU/t
+CE.block.Generator.5.name=CE Permanent light generator 2048 EU/t
+CE.block.Generator.6.name=CE Permanent light generator 8192 EU/t
+CE.block.Generator.7.name=CE Permanent light generator 32768 EU/t
+CE.block.Generator.8.name=CE Permanent light generator 131072 EU/t
+CE.block.Generator.9.name=CE Permanent light generator 532480 EU/t
+item.vrgenerator:CE_LavaUpdater.name=Lava Updater

@@ -1,0 +1,23 @@
+tasks.withType(Compile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs += ['-source', '1.7', '-target', '1.7']
+}
+sourceSets.main {
+    java.srcDirs project.projectDir.name
+    resources.srcDirs project.projectDir.name
+}
+repositories {
+    maven {
+        name = "ic2"
+        url = "http://maven.ic2.player.to/"
+    }
+}
+dependencies {
+    compile 'net.industrial-craft:industrialcraft-2:2.1.470-experimental:api'
+}
+version = "172-408V1"
+minecraft {
+    // replacing stuff in the source
+    replace '@VERSION@', project.version
+    replace '@MC_VERSION@', version
+}

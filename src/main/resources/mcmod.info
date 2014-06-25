@@ -1,0 +1,21 @@
+[
+{
+  "modid": "VisibleRayGenerator",
+  "name": "VisibleRayGenerator",
+  "description": "Add some visible ray energy generator to mc172",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "http://forum.minecraftuser.jp/viewtopic.php?f=13&t=6672",
+  "updateUrl": "",
+  "authorList": [
+    "takanasayo"
+  ],
+  "credits": "Updated to mc164 By A.K.",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"IC2",
+  "dependencies": ["mod_MinecraftForge"
+  ]
+}
+]

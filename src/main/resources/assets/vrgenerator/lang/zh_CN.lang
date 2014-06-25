@@ -1,0 +1,17 @@
+
+tile.CE_Solar.name=可见光发电机
+CE.block.Solar.0.name=可见光发电机 1 EU/t
+CE.block.Solar.1.name=可见光发电机 8 EU/t
+CE.block.Solar.2.name=可见光发电机 64 EU/t
+CE.block.Solar.3.name=可见光发电机 512 EU/t
+CE.block.Generator.0.name=CE恒久光发电机 2 EU/t
+CE.block.Generator.1.name=CE恒久光发电机 8 EU/t
+CE.block.Generator.2.name=CE恒久光发电机 32 EU/t
+CE.block.Generator.3.name=CE恒久光发电机 128 EU/t
+CE.block.Generator.4.name=CE恒久光发电机 512 EU/t
+CE.block.Generator.5.name=CE恒久光发电机 2048 EU/t
+CE.block.Generator.6.name=CE恒久光发电机 8192 EU/t
+CE.block.Generator.7.name=CE恒久光发电机 32768 EU/t
+CE.block.Generator.8.name=CE恒久光发电机 131072 EU/t
+CE.block.Generator.9.name=CE恒久光发电机 532480 EU/t
+item.vrgenerator:CE_LavaUpdater.name=岩浆升级
