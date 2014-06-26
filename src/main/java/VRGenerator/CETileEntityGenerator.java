@@ -6,11 +6,6 @@ import ic2.api.energy.tile.IEnergySource;
 import ic2.api.network.INetworkDataProvider;
 import ic2.api.network.INetworkUpdateListener;
 import ic2.api.tile.IWrenchable;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -18,14 +13,17 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CETileEntityGenerator extends TileEntity implements INetworkDataProvider, INetworkUpdateListener, IWrenchable, IEnergySource
 {
-    private boolean active;
-    private short facing;
-    public boolean prevActive;
-    public short prevFacing;
+//    private boolean active;
+//    private short facing;
+//    public boolean prevActive;
+//    public short prevFacing;
     public int production;
-    private Random random = new Random();
+//    private Random random = new Random();
     public boolean addedToEnergyNet = false;
     public int activityMeter = 0;
     public int ticksSinceLastActiveUpdate;
@@ -33,7 +31,7 @@ public class CETileEntityGenerator extends TileEntity implements INetworkDataPro
     
     public CETileEntityGenerator()
     {
-        this.ticksSinceLastActiveUpdate = random.nextInt(256);
+        this.ticksSinceLastActiveUpdate = this.worldObj.rand.nextInt(256);
     }
     
     public void updateEntity() {
@@ -122,13 +120,12 @@ public class CETileEntityGenerator extends TileEntity implements INetworkDataPro
 
 	@Override
 	public void onNetworkUpdate(String field) {
-		// TODO 自動生成されたメソッド・スタブ
 		
 	}
 
 	@Override
 	public List<String> getNetworkedFields() {
-		List<String> syncList = new ArrayList();
+		List<String> syncList = new ArrayList<>();
 		syncList.add("active");
 		return syncList;
 	}
