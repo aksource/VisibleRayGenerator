@@ -13,7 +13,7 @@ repositories {
     }
 }
 dependencies {
-    compile 'net.industrial-craft:industrialcraft-2:2.1.470-experimental:api'
+    compile 'net.industrial-craft:industrialcraft-2:2.1.485-experimental:api'
 }
 version = "172-408V1"
 minecraft {
