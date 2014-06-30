@@ -1,8 +1,5 @@
 package VRGenerator;
 
-import java.util.Random;
-
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
@@ -13,6 +10,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants;
+
+import java.util.Random;
 
 public class CESolarTileEntity extends CETileEntityGenerator implements IInventory,ISidedInventory
 {
@@ -28,13 +28,14 @@ public class CESolarTileEntity extends CETileEntityGenerator implements IInvento
 	//出力EU/t
 	public static int[] power = { 1, 8, 64, 512};
 	//光レベル計算用
-	private static int[] lightPower = { 1,2,4,8,16,32,64,128,256,512,1024 };
+//	private static int[] lightPower = { 1,2,4,8,16,32,64,128,256,512,1024 };
 
 	public CESolarTileEntity(int lv)
 	{
 		super();
 		level = lv;
 		production = power[level];
+        tier = getTierFromProduction(production);
 	}
 
 	public CESolarTileEntity()
@@ -92,21 +93,16 @@ public class CESolarTileEntity extends CETileEntityGenerator implements IInvento
 		}
 	}
 
-	public String getInvName()
-	{
-		return "CE Solar "+power;
-	}
-
 	public void readFromNBT(NBTTagCompound nbttagcompound)
 	{
 		super.readFromNBT(nbttagcompound);
 
-		NBTTagList nbttaglist = nbttagcompound.getTagList("Items", 10);
+		NBTTagList nbttaglist = nbttagcompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
 		inventory = new ItemStack[getSizeInventory()];
 
 		for (int i = 0; i < nbttaglist.tagCount(); i++)
 		{
-			NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);
+			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
 			byte byte0 = nbttagcompound1.getByte("Slot");
 
 			if (byte0 >= 0 && byte0 < inventory.length)
@@ -139,20 +135,20 @@ public class CESolarTileEntity extends CETileEntityGenerator implements IInvento
 		nbttagcompound.setInteger("level", level);
 	}
 
-	public String getGuiClassName(EntityPlayer entityplayer)
-	{
-		return "CESolarGui";
-	}
-
-	public String getGuiName()
-	{
-		return String.format("CE.block.Solar.%d.name", level);
-	}
-
-	public int tickRate()
-	{
-		return 128;
-	}
+//	public String getGuiClassName(EntityPlayer entityplayer)
+//	{
+//		return "CESolarGui";
+//	}
+//
+//	public String getGuiName()
+//	{
+//		return String.format("CE.block.Solar.%d.name", level);
+//	}
+//
+//	public int tickRate()
+//	{
+//		return 128;
+//	}
     public static boolean isSunVisible(World world, int i, int j, int k)
     {
     	world.calculateInitialSkylight();
@@ -168,13 +164,10 @@ public class CESolarTileEntity extends CETileEntityGenerator implements IInvento
         markDirty();
         if (ticksSinceLastActiveUpdate % 256 == 0)
         {
-//            setActive(activityMeter > 0);
             activityMeter = 0;
         }
         activityMeter++;
         ticksSinceLastActiveUpdate++;
-//        if(this.sunIsVisible)
-//        	sendEnergy(getMaxEnergyOutput());
     }
 	@Override
 	public int getSizeInventory() {
@@ -233,11 +226,7 @@ public class CESolarTileEntity extends CETileEntityGenerator implements IInvento
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer var1) {
-		if (worldObj.getTileEntity(xCoord, yCoord, zCoord) != this){
-			return false;
-		}else{
-			return var1.getDistance((double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D) <= 64D;
-		}
+        return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && var1.getDistance((double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D) <= 64D;
 	}
 
 	@Override
@@ -268,7 +257,7 @@ public class CESolarTileEntity extends CETileEntityGenerator implements IInvento
 
     @Override
     public String getInventoryName() {
-        return null;
+        return String.format("CE Solar %d", production);
     }
 
     @Override

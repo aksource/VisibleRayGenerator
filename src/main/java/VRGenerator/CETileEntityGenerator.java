@@ -18,22 +18,26 @@ import java.util.List;
 
 public class CETileEntityGenerator extends TileEntity implements INetworkDataProvider, INetworkUpdateListener, IWrenchable, IEnergySource
 {
-//    private boolean active;
-//    private short facing;
-//    public boolean prevActive;
-//    public short prevFacing;
+
+    public static final int LV = 32;
+    public static final int MV = 128;
+    public static final int HV = 512;
+    public static final int EV = 2048;
     public int production;
-//    private Random random = new Random();
     public boolean addedToEnergyNet = false;
     public int activityMeter = 0;
-    public int ticksSinceLastActiveUpdate;
+    public int ticksSinceLastActiveUpdate = 0;
     public int tier = 1;
     
     public CETileEntityGenerator()
     {
-        this.ticksSinceLastActiveUpdate = this.worldObj.rand.nextInt(256);
+//        this.ticksSinceLastActiveUpdate = this.worldObj.rand.nextInt(256);
     }
-    
+
+    public int getTierFromProduction(int prod) {
+        return (prod <= LV)? 1 : (prod <= MV)? 2 : (prod <= HV)? 3 : (prod <= EV)? 4: 5;
+    }
+
     public void updateEntity() {
     	if(!addedToEnergyNet)
     	{
@@ -84,7 +88,12 @@ public class CETileEntityGenerator extends TileEntity implements INetworkDataPro
 		
 	}
 
-	@Override
+    @Override
+    public int getSourceTier() {
+        return this.tier;
+    }
+
+    @Override
 	public boolean emitsEnergyTo(TileEntity receiver, ForgeDirection direction) {
 		return true;
 	}

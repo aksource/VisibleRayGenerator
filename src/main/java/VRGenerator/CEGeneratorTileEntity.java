@@ -1,8 +1,5 @@
 package VRGenerator;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class CEGeneratorTileEntity extends CETileEntityGenerator
@@ -23,6 +20,7 @@ public class CEGeneratorTileEntity extends CETileEntityGenerator
 		super();
 		level = lv;
 		init();
+        tier = getTierFromProduction(production);
 	}
 
 	public CEGeneratorTileEntity(){}
@@ -31,8 +29,6 @@ public class CEGeneratorTileEntity extends CETileEntityGenerator
 	public void init()
 	{
 		production = power[level];
-//		packet = loops[level];
-//		output = (short)(production / packet);
 	}
 
 	//行う処理は送電のみの超軽量設計
@@ -40,10 +36,6 @@ public class CEGeneratorTileEntity extends CETileEntityGenerator
 	public void updateEntity()
 	{
 		super.updateEntity();
-//		for(int i = 0; i < packet; i++)
-//		{
-//			sendEnergy(output);
-//		}
 	}
 
 	@Override

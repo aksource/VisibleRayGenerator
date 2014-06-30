@@ -167,7 +167,7 @@ public class VisibleRayGenerator
 		Ic2Items.advancedMachine;
 */
 		GameRegistry.addRecipe(new ItemStack(lavaUpdater), "c", "a", "i",
-				'c', IC2Items.getItem("lavaCell"), 'a', IC2Items.getItem("advancedCircuit"), 'i', IC2Items.getItem("refinedIronIngot"));
+				'c', IC2Items.getItem("lavaCell"), 'a', IC2Items.getItem("advancedCircuit"), 'i', IC2Items.getItem("plateiron"));
 		GameRegistry.addShapelessRecipe(solar1, IC2Items.getItem("solarPanel"), IC2Items.getItem("advancedCircuit"));
 		if(isSolarCostUp)
 		{
