@@ -11,7 +11,7 @@ repositories {
 dependencies {
     compile 'net.industrial-craft:industrialcraft-2:2.2.492-experimental:api'
 }
-version = "1710-492V1"
+version = "1710-492V2"
 minecraft {
     // replacing stuff in the source
     replace '@VERSION@', project.version

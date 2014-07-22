@@ -16,7 +16,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CETileEntityGenerator extends TileEntity implements INetworkDataProvider, INetworkUpdateListener, IWrenchable, IEnergySource
+public class CETileEntityGenerator extends TileEntity implements IWrenchable, IEnergySource
 {
 
     public static final int LV = 32;
@@ -28,16 +28,12 @@ public class CETileEntityGenerator extends TileEntity implements INetworkDataPro
     public int activityMeter = 0;
     public int ticksSinceLastActiveUpdate = 0;
     public int tier = 1;
-    
-    public CETileEntityGenerator()
-    {
-//        this.ticksSinceLastActiveUpdate = this.worldObj.rand.nextInt(256);
-    }
 
     public int getTierFromProduction(int prod) {
         return (prod <= LV)? 1 : (prod <= MV)? 2 : (prod <= HV)? 3 : (prod <= EV)? 4: 5;
     }
 
+    @Override
     public void updateEntity() {
     	if(!addedToEnergyNet)
     	{
@@ -46,19 +42,17 @@ public class CETileEntityGenerator extends TileEntity implements INetworkDataPro
     			EnergyTileLoadEvent event = new EnergyTileLoadEvent(this);
     			MinecraftForge.EVENT_BUS.post(event);
     		}
-//    		else
-//    		{
-//    			NetworkHelper.requestInitialData(this);
-//    		}
     		this.addedToEnergyNet = true;
     	}
     }
-//    public int sendEnergy(int send)
-//    {
-//      EnergyTileLoadEvent event = new EnergyTileLoadEvent(this);
-//      MinecraftForge.EVENT_BUS.post(event);
-//      return event.amount;
-//    }
+
+    @Override
+    public void invalidate() {
+        super.invalidate();
+        onChunkUnload();
+    }
+
+    @Override
     public void onChunkUnload()
     {
     	if(this.addedToEnergyNet)
@@ -68,14 +62,23 @@ public class CETileEntityGenerator extends TileEntity implements INetworkDataPro
     		this.addedToEnergyNet = false;
     	}
     }
+
+    @Override
     public void readFromNBT(NBTTagCompound nbttagcompound)
     {
         super.readFromNBT(nbttagcompound);
+        this.tier = nbttagcompound.getInteger("tier");
+        this.activityMeter = nbttagcompound.getInteger("activitymeter");
+        this.production = nbttagcompound.getInteger("production");
     }
 
+    @Override
     public void writeToNBT(NBTTagCompound nbttagcompound)
     {
         super.writeToNBT(nbttagcompound);
+        nbttagcompound.setInteger("tier", this.tier);
+        nbttagcompound.setInteger("activitymeter", this.activityMeter);
+        nbttagcompound.setInteger("production", this.production);
     }
 
 	@Override
@@ -125,17 +128,5 @@ public class CETileEntityGenerator extends TileEntity implements INetworkDataPro
 	@Override
 	public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {
 		return new ItemStack(this.getBlockType(), 1, this.getBlockMetadata());
-	}
-
-	@Override
-	public void onNetworkUpdate(String field) {
-		
-	}
-
-	@Override
-	public List<String> getNetworkedFields() {
-		List<String> syncList = new ArrayList<>();
-		syncList.add("active");
-		return syncList;
 	}
 }
