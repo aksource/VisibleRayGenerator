@@ -1,7 +1,6 @@
 package VRGenerator;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Sidnet.minecraftforget cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.item.IC2Items;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;

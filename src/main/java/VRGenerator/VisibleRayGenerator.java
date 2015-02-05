@@ -1,11 +1,10 @@
 package VRGenerator;
 
-import cpw.mods.fml.common.*;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.net.minecraftforget cpw.mods.fml.common.Mod.Enet.minecraftforgeler;
+import cpw.mods.fmnet.minecraftforge.Mod.Instance;
+import cpw.mods.fml.commnet.minecraftforge.FMLInitializationEvent;
+import cpw.mods.fmnet.minecraftforge.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializanet.minecraftforget;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ic2.api.info.Info;
