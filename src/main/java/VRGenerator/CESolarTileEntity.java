@@ -74,7 +74,7 @@ public class CESolarTileEntity extends CETileEntityGenerator implements IInvento
 				{
 					light = power[level] / 4.0d;
 				}
-				//光源13～7なら1/16
+				//光源13〜7なら1/16
 				else if(item instanceof ItemBlock && ((ItemBlock) item).field_150939_a.getLightValue() >= 7)
 				{
 					light = power[level] / 16.0d;

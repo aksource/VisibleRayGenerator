@@ -2,3 +2,4 @@
 /eclipse
 /.gradle
 *.iml
+/lib
