@@ -112,14 +112,8 @@ public class CESolarContainer extends Container
 		}
 		tileEntity.updateSunVisibility();
 		sunIsVisible = tileEntity.sunIsVisible;
-//		updateGui();
 		return result;
     }
-
-//	public void updateGui()
-//	{
-//		if(gui != null) gui.drawGuiContainerForegroundLayer();
-//	}
 
     public void detectAndSendChanges()
     {

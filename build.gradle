@@ -12,7 +12,7 @@ dependencies {
     compile files('lib/industrialcraft-2-2.2.695-experimental-dev.jar')
 	//compile 'net.industrial-craft:industrialcraft-2:2.2.650-experimental:api'
 }
-version = "1.7.10-4.9.2-2"
+version = "1.7.10-4.9.2-3"
 minecraft {
     // replacing stuff in the source
     replace '@VERSION@', project.version

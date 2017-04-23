@@ -70,21 +70,6 @@ public class CESolarBlock extends BlockContainer
 		return 1;
 	}
 
-//	@Override
-//	public TileEntityBlock getBlockEntity(int i)
-//	{
-//		int solar = CESolarTileEntity.power.length;
-//		if(i >= 0 && i < solar)
-//		{
-//			return new CESolarTileEntity(i);
-//		}
-//		else if(i < solar + CEGeneratorTileEntity.power.length)
-//		{
-//			return new CEGeneratorTileEntity(i - solar);
-//		}
-//		return null;
-//	}
-
 	@Override
 	public void randomDisplayTick(World world, int i, int j, int k, Random random)
 	{
@@ -172,11 +157,11 @@ public class CESolarBlock extends BlockContainer
     @SideOnly(Side.CLIENT)
     @Override
     @SuppressWarnings("unchecked")
-    public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List arraylist)
+    public void getSubBlocks(Item item, CreativeTabs tabs, List list)
     {
 		for(int i = 0; i < CESolarTileEntity.power.length + CEGeneratorTileEntity.power.length; i++)
 		{
-			arraylist.add(new ItemStack(this, 1, i));
+			list.add(new ItemStack(this, 1, i));
 		}
     }
 

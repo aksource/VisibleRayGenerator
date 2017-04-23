@@ -28,7 +28,7 @@ public class CESolarGui extends GuiContainer
 	{
 		tileentity.updateSunVisibility();
 		//現在の発電量をGuiに表示
-		name = StatCollector.translateToLocal("tile.CESolar.name") + String.format(
+		name = StatCollector.translateToLocal("tile.CE_Solar.name") + String.format(
 				" %d EU/t", ((this.tileentity.sunIsVisible) ? this.tileentity.production: 0));
 		inv = StatCollector.translateToLocal("container.inventory");
 		fontRendererObj.drawString(name, (xSize - fontRendererObj.getStringWidth(name)) / 2, 6, 0x404040);
