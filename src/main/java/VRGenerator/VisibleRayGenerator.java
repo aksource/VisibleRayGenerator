@@ -99,16 +99,6 @@ public class VisibleRayGenerator {
         GameRegistry.registerTileEntity(CESolarTileEntity.class, "CE_Solar");
         GameRegistry.registerTileEntity(CEGeneratorTileEntity.class, "CE_Generator");
 
-//		if(isICstacksizeUp)
-//		{
-//			VRGItemFieldAccessHelper.changeField(Items.getItem("energyCrystal").getItem(), 64);
-//			VRGItemFieldAccessHelper.changeField(Items.getItem("lapotronCrystal").getItem(), 64);
-//			VRGItemFieldAccessHelper.changeField(Items.getItem("treetap").getItem(), 64);
-//			Items.getItem("reBattery").getItem().setMaxStackSize(64);
-//			Items.getItem("coolingCell").getItem().setMaxStackSize(64);
-//			Items.getItem("reinforcedDoorBlock").getItem().setMaxStackSize(64);
-//		}
-
         if (isResistanceVanilla) {
             Blocks.obsidian.setResistance(2000F);
             Blocks.flowing_water.setResistance(500F);

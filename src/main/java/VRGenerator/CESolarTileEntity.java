@@ -39,20 +39,6 @@ public class CESolarTileEntity extends CETileEntityGenerator implements IInvento
         this(0);
     }
 
-    //	public String getGuiClassName(EntityPlayer entityplayer)
-//	{
-//		return "CESolarGui";
-//	}
-//
-//	public String getGuiName()
-//	{
-//		return String.format("CE.block.Solar.%d.name", level);
-//	}
-//
-//	public int tickRate()
-//	{
-//		return 128;
-//	}
     public static boolean isSunVisible(World world, int i, int j, int k) {
         world.calculateInitialSkylight();
         int light = world.getBlockLightValue(i, j, k);
@@ -100,6 +86,7 @@ public class CESolarTileEntity extends CETileEntityGenerator implements IInvento
         }
     }
 
+    @Override
     public void readFromNBT(NBTTagCompound nbttagcompound) {
         super.readFromNBT(nbttagcompound);
 
@@ -119,6 +106,7 @@ public class CESolarTileEntity extends CETileEntityGenerator implements IInvento
         production = power[level];
     }
 
+    @Override
     public void writeToNBT(NBTTagCompound nbttagcompound) {
         super.writeToNBT(nbttagcompound);
 
@@ -139,6 +127,7 @@ public class CESolarTileEntity extends CETileEntityGenerator implements IInvento
     }
 
     //不要な処理を削除して軽量化
+    @Override
     public void updateEntity() {
         super.updateEntity();
         if (this.worldObj.getTotalWorldTime() % 80L == 0L)
